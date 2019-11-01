@@ -4,6 +4,7 @@
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/popup.css"
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -16,22 +17,43 @@
     </style>
   </head>
   <body>
-      <p> Calendar Is Here </p>
-    <button id="changeColor"></button>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>AutoCal</h1>
+        </div>
+      </div>
     <script src="popup.js"></script>
-    <br>
-    <p>Event Name</p>
-    <input type="Event Name" id="eventName" name="Put Event Name Here">
-    <br>
-    <p> Event Date</p>
-    <input type="date" id="start" name="trip-start"
-       value="2019-10-29"
-       min="2019-10-29" max="3000-12-31">
-    <p>Event Time</p>
+    
+    
+    <section id="cover">
+        <div id="cover-caption">
+            <div id="container" class="container">
+               
+               
+                    <div class="info-form">
+                        <form action="" class="form-inlin justify-content-center">
+                            <div class="form-group">
+                                <label class="sr-only">Event Name</label>
+                                <input type="text" class="form-control" placeholder="Event Name Here">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Date</label>
+                                <input type="date" id="start" name="trip-start" value="2019-10-29" min="2019-10-29" max="3000-12-31">
+                              </div>
+                              <div class="form-group">
+                                  <label class="sr-only">Event Name</label>
+                                  <input type="time" id="appt" name="appt" min="00:00" max="23:59" required>
+                              </div>
+                            <button type="submit" class="btn btn-success ">Submit</button>
+                        </form>
+                    </div>
+                    <br>
+                
+            </div>
+        </div>
+    </section>
+  
 
-      <input type="time" id="appt" name="appt"
-       min="00:00" max="23:59" required>
-       <br>
-       <button type="submit" class="btn btn-info" data-toggle="submit" data-target="submit">Submit</button>
+      
   </body>
 </html>
