@@ -1,13 +1,14 @@
 {
   "name": "AutoCalendar",
   "version": "0.1",
+  "manifest_version": 2,
   "description": "Ability to automatically link up calendars",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
-  "options_page": "options.html",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+  "browser_action": {
+    "default_icon": "cal_icon.png",
+    "default_popup": "popup.html"
   },
+
+  "icons": { "128": "cal_icon.png"}
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
