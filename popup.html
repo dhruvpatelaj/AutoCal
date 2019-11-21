@@ -19,6 +19,12 @@
   </head>
   <body>
 
+      <button id="authorize_button">Authorize</button>
+      <button id="signout_button" style="display: none;">Sign Out</button>
+  
+      <pre id="content" style="white-space: pre-wrap;"></pre>
+  
+
   <div class="modal-header">
     <h1>
     <img class="logo-icon" src="/images/cal_icon.jpeg"/>AutoCal
@@ -50,5 +56,10 @@
   <button type="submit" class="btn btn-info" data-toggle="submit" data-target="submit">Send to Calendar</button>
   </div>
     <script src="popup.js"></script>
-  </body>
+    <script src="scripts/google_api.js"></script>
+</body>
+
+
+
+ 
 </html>
