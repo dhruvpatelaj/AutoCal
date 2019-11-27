@@ -1,19 +1,17 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+var contextSelection = {
+  "id": "baseString",
+  "title": "Send To Calendar",
+  "contexts": ["selection"]
 
-'use strict';
+};
 
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log('The color is green.');
-  });
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
-      })],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
-  });
-});
+
+
+chrome.contextMenus.create(contextSelection);
+
+chrome.contextMenus.onClicked.addListener(function(parseData){
+  if(parseData.menuItemId == "baseString" && parseData.selectionText){
+    window.open( 
+      "http://www.google.com/calendar/event?action=TEMPLATE", "_blank"); 
+  }
+})

@@ -2,7 +2,7 @@
   "name": "AutoCalendar",
   "version": "0.1",
   "description": "Ability to automatically link up calendars",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "declarativeContent", "storage","contextMenus"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
