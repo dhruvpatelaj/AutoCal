@@ -40,3 +40,8 @@ window.onload = function() {
 
         });
     };
+
+
+    //create a few global variables
+    //title, date, time, location
+    //we will do the rest

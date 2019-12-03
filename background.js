@@ -1,3 +1,6 @@
+
+
+
 var contextSelection = {
   "id": "baseString",
   "title": "Send To Calendar",
@@ -6,12 +9,34 @@ var contextSelection = {
 };
 
 
+var title;
+var date;
+//....
+
+/** BACKEND  */
 
 chrome.contextMenus.create(contextSelection);
 
 chrome.contextMenus.onClicked.addListener(function(parseData){
+  
+  
   if(parseData.menuItemId == "baseString" && parseData.selectionText){
-    window.open( 
-      "http://www.google.com/calendar/event?action=TEMPLATE", "_blank"); 
+    
+      //PUT your code here
+    //thealgo()
+      title = "meeting"
+    //fillForm(<parameters>)
   }
 })
+
+//function thealgo
+
+
+/** BACKEND  */
+
+
+//function fillForm(title, location, date, time){
+
+
+//listener for submit button that calls oauth function
+
