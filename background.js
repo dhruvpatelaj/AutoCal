@@ -15,7 +15,7 @@ var time;
 var endTime;
 var loc;
 var description;
-var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];
+var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];//Just an array that is being used to test
 //....
 
 /** BACKEND  */
@@ -44,7 +44,7 @@ function eventRecognition(selection)
     //alert(parseData.selectionText)
 }
 
-function titleFinder(selection)
+function titleFinder(selection) //this works but it is still some problems
 {
   var temp = "";
   var flag = false;
