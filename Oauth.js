@@ -1,6 +1,12 @@
 
-
+var value;
 window.onload = function() {
+    
+    chrome.storage.local.get(['login'], function(result) {
+        if (result.login == true){
+            document.getElementById("Oauth").style.visibility = "hidden"
+        }
+    });
     
     document.getElementById('Oauth').addEventListener('click', function () {
         
@@ -9,7 +15,12 @@ window.onload = function() {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
             });
-            document.getElementById("Oauth").style.visibility = 'hidden';
+            
+            value = true;
+            chrome.storage.local.set({'login': value}, function() {
+                document.getElementById("Oauth").style.visibility = "hidden"
+            });
+            
             const queryParams = {headers};
 
             fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', queryParams)
