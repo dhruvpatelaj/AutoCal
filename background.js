@@ -15,7 +15,7 @@ var time;
 var endTime;
 var loc;
 var description;
-
+var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];
 //....
 
 /** BACKEND  */
@@ -46,7 +46,26 @@ function eventRecognition(selection)
 
 function titleFinder(selection)
 {
-
+  var temp = "";
+  var flag = false;
+  title = "";
+  for(var i = 0; i<selection.length; i++){
+    if(selection[i] != " "){
+      temp = temp + selection[i];
+    }else if(selection[i] == " "){
+      for(var k = 0; k < keyWords.length; k++){
+        if(temp.toLowerCase() == keyWords[k]){
+          flag = true;
+          break;
+        }
+      }
+      if(flag == true){
+        break;
+      }
+      title = title + " " + temp;
+      temp = "";
+    }
+  }
 }
 
 
