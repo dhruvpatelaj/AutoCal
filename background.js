@@ -37,7 +37,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
       });
 
     
-    alert(window.outerWidth+' x '+window.outerHeight);
+   
     
   });
 
