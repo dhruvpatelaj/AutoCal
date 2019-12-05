@@ -64,10 +64,35 @@ function dateFinder(selection){
 
 function timeFinder(selection)
 {
-    var n = /[0-9]/i
-    time = n;
-}
+    //first clear the variables
+    time = "";
+    endTime = "";
 
+    //first search for times in colon format like: 6:30, 9:20, 2:00
+    var colonTime = selection.match(/([0-9]{1,2})(:[0-5][0-9])/gi);
+
+    //if anything in colon format have been found, then assume
+    //them to be the start and end time. If no end time, it returns undefined
+    if (colonTime != undefined)
+    {
+        time = colonTime[0];
+        endTime = colonTime[1];
+        return;
+    }
+
+    // this don't do anything yet
+    //search() returns-1 if none found
+    var position_of_first_num = selection.search(/[0-9]/gi);
+    var am_pm = selection.search(/am|pm/gi);
+    var space = selection.search(/../gi);
+
+    var full = selection.match(/[0-9](\s?)(am|pm)/mi);
+    var fullIndex = full.index;
+
+    //time =  "hehexd";
+    //full + " : " + fullIndex;
+    //position_of_first_num + ", " + am_pm + ", " + space;
+}
 
 function locFinder(selection){
 
