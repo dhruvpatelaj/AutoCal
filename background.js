@@ -12,6 +12,7 @@ var contextSelection = {
 var title;
 var date;
 var time;
+var endTime;
 var loc;
 var description;
 //....
@@ -27,7 +28,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
     var selection = parseData.selectionText;
     eventRecognition(selection)
-    alert(title + "\n" + date + "\n" + time + "\n" + loc);
+    alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
 
     //fillForm(<parameters>)
   }
@@ -45,20 +46,25 @@ function eventRecognition(selection)
 function titleFinder(selection)
 {
 
-  title = "a";
 }
 
 
 function dateFinder(selection){
-
-
-    date = "b";
+    date = "";
+    var d = selection.match(/(([1-9])|([0-2][0-9]))((\/)|(-))(([1-9])|([0-2][0-9])|([3][0-1]))((\/)|(-))((\d{4})|(\d{2}))/gi);
+    if(d == null){
+      var d = selection.match(/(([1-9])|([0-2][0-9]))((\/)|(-))(([1-9])|([0-2][0-9])|([3][0-1]))/gi);
+    }
+    if(d == null){
+      var d = selection.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan.|Feb.|Mar.|Apr.|May.|Jun.|Jul.|Aug.|Sep.|Oct.|Nov.|Dec.|January|February|March|April|May|June|July|August|September|October|November|December)\s\d/gi);
+    }
+    date = d;
 }
 
 function timeFinder(selection)
 {
-
-    time = "c";
+    var n = /[0-9]/i
+    time = n;
 }
 
 
