@@ -35,7 +35,7 @@ window.onload = function() {
                         return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
                     })
                     .join("&");
-
+            
             fetch(
                 "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd",
                 {
@@ -54,6 +54,11 @@ window.onload = function() {
         })
 
         });
+
+
+
+
+        
     };
 
 

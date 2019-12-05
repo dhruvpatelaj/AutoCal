@@ -23,7 +23,23 @@ var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];//Just an arr
 chrome.contextMenus.create(contextSelection);
 
 chrome.contextMenus.onClicked.addListener(function(parseData){
+    chrome.tabs.create({
+      url: chrome.extension.getURL('popup.html'),
+      active: false
+  }, function(tab) {
+      // After the tab has been created, open a window to inject the tab
+      chrome.windows.create({
+          tabId: tab.id,
+          type: 'popup',
+          focused: true,
+          width: 390,
+          height: 550
+      });
 
+    
+    alert(window.outerWidth+' x '+window.outerHeight);
+    
+  });
 
   if(parseData.menuItemId == "baseString" && parseData.selectionText){
 
@@ -34,7 +50,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
     //fillForm(<parameters>)
   }
 })
-
+  
 function eventRecognition(selection)
 {
     titleFinder(selection);
@@ -106,7 +122,7 @@ function timeFinder(selection)
     var space = selection.search(/../gi);
 
     var full = selection.match(/[0-9](\s?)(am|pm)/mi);
-    var fullIndex = full.index;
+    //var fullIndex = full.index;
 
     //time =  "hehexd";
     //full + " : " + fullIndex;
