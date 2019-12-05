@@ -1,11 +1,15 @@
+
+
 window.onload = function() {
+    
     document.getElementById('Oauth').addEventListener('click', function () {
+        
         chrome.identity.getAuthToken({interactive: true}, function (token) {
             const headers = new Headers({
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
             });
-
+            document.getElementById("Oauth").style.visibility = 'hidden';
             const queryParams = {headers};
 
             fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', queryParams)
