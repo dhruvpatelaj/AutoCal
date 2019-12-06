@@ -4,7 +4,10 @@ document.getElementById("eventDate").value = "2020-01-01";
 document.getElementById("eventTime").value = "12:00:00";
 
 
-document.getElementById("eventDate").focus()
+document.getElementById("eventTime").parentNode.parentNode.classList.add("focus");
+document.getElementById("eventDate").parentNode.parentNode.classList.add("focus");
+
+document.getElementById("eventName").focus()
 
 function addcl(){
 	let parent = this.parentNode.parentNode;
@@ -15,7 +18,9 @@ function remcl(){
 	let parent = this.parentNode.parentNode;
 	if(this.value == ""){
 		parent.classList.remove("focus");
+		
 	}
+
 }
 
 
