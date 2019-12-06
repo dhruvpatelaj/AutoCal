@@ -28,7 +28,7 @@ document.getElementById("eventDate").parentNode.parentNode.classList.add("focus"
 
 
 
-document.getElementById("eventName").focus()
+//document.getElementById("eventName").focus()
 
 function addcl(){
 	let parent = this.parentNode.parentNode;
