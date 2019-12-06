@@ -1,6 +1,21 @@
 const inputs = document.querySelectorAll(".input");
 
-document.getElementById("eventDate").value = "2020-01-01";
+
+
+
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + "-" + mm + '-' + dd;
+
+
+
+
+
+document.getElementById("eventDate").value = today;
 document.getElementById("eventTime").value = "12:00:00";
 document.getElementById("eventTimeEnd").value = "13:00:00";
 
@@ -8,6 +23,10 @@ document.getElementById("eventTimeEnd").value = "13:00:00";
 document.getElementById("eventTime").parentNode.parentNode.classList.add("focus");
 document.getElementById("eventTimeEnd").parentNode.parentNode.classList.add("focus");
 document.getElementById("eventDate").parentNode.parentNode.classList.add("focus");
+
+
+
+
 
 document.getElementById("eventName").focus()
 
