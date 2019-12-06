@@ -2,9 +2,11 @@ const inputs = document.querySelectorAll(".input");
 
 document.getElementById("eventDate").value = "2020-01-01";
 document.getElementById("eventTime").value = "12:00:00";
+document.getElementById("eventTimeEnd").value = "13:00:00";
 
 
 document.getElementById("eventTime").parentNode.parentNode.classList.add("focus");
+document.getElementById("eventTimeEnd").parentNode.parentNode.classList.add("focus");
 document.getElementById("eventDate").parentNode.parentNode.classList.add("focus");
 
 document.getElementById("eventName").focus()

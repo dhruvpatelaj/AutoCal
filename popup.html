@@ -2,10 +2,16 @@
 
 <html>
 <head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+   
     
     <title>AutoCal</title>
 
@@ -24,6 +30,7 @@
              
             <form action="popup.html">
                 
+                <input type="submit" class="btn" id="Oauth" style="visibility: hidden;" value="Login">
                 <img src="images/forms.svg">
                 <h2> AutoCal </h2>
 
@@ -60,10 +67,22 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div>
-                        <h5>Time</h5>
+                        <h5>Start Time</h5>
                         <input class="input" id="eventTime" type="time">
                     </div>
 
+                </div>
+
+                <div class="input-div">
+                    
+                    <div class="i">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h5>End Time</h5>
+                        <input class="input" id="eventTimeEnd" type="time">
+                    </div>
+    
                 </div>
                 
                 <!-- Event Location-->
@@ -80,7 +99,7 @@
                 </div>
 
                 <input type="submit" class="btn" id="submit" value="Send">
-                <input type="submit" class="btn" id="Oauth" value="Login">
+                
             </form>
 
         </div>
@@ -90,7 +109,7 @@
     <script type="text/javascript" src="js/popup.js"></script>
     <script src="popup.js"></script>
     <script type="text/javascript" src="Oauth.js"></script>
-
+    
 
 
 

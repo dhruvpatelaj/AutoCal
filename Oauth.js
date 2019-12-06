@@ -7,9 +7,10 @@ var value;
 window.onload = function() {
 
     chrome.storage.local.get(['login'], function(result) {
-        if (result.login == true){
-            document.getElementById("Oauth").style.visibility = "hidden"
+        if (result.login != true){
+            document.getElementById("Oauth").style.visibility = "visible"
         }
+        
     });
 
     
