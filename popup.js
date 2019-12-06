@@ -11,8 +11,15 @@ var yyyy = today.getFullYear();
 
 today = yyyy + "-" + mm + '-' + dd;
 
+function fillForms(){
+	alert("hello")
+}
 
-
+chrome.storage.sync.get(['eventValue'], function(result) {
+	
+	document.getElementById("eventName").value = result.eventValue;
+	document.getElementById("eventName").parentNode.parentNode.classList.add("focus");
+});
 
 
 document.getElementById("eventDate").value = today;
