@@ -1,14 +1,18 @@
 
 var value;
 
- 
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
 
     
 window.onload = function() {
 
     chrome.storage.local.get(['login'], function(result) {
-        if (result.login == true){
-            document.getElementById("Oauth").style.visibility = "hidden"
+        if(result.login){
+            removeElement("Oauth")
         }
     });
 
@@ -24,7 +28,7 @@ window.onload = function() {
 
             value = true;
             chrome.storage.local.set({'login': value}, function () {
-                document.getElementById("Oauth").style.visibility = "hidden"
+                
             });
             fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', queryParams)
                 .then((response) => response.json()) // Transform the data into json
@@ -87,7 +91,7 @@ window.onload = function() {
                 {
                     method: "post",
                     body: makeQuerystring({
-                        text: "Appointment at Somewhere on December 15th 10am-10:25am"
+                        text: "Appointment at Somewhere on December 15th 11am-11:25am"
                     }),
                     headers: {
                         'Authorization': 'Bearer ' + token,
