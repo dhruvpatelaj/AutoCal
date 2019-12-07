@@ -31,18 +31,18 @@
 
       <div>
         <label for="eventName" class="col-sm-2 col-form-label">Event:</label>
-        <input type="Event Name" id="eventName" name="Put Event Name Here" placeholder="Event Name">
+        <input type="Event Name" id="formTitle" name="Put Event Name Here" placeholder="Event Name">
         <label for="location" class="col-sm-2 col-form-label">Location:</label>
-        <input type="Location" id="location" name="Put Location Here" placeholder="Location">
+        <input type="Location" id="formLocation" name="Put Location Here" placeholder="Location">
       </div>
       <div>
         <label for="start" class="col-sm-2 col-form-label">Date:</label>
-        <input type="date" id="start" name="trip-start"
+        <input type="date" id="formDate" name="trip-start"
             min="2019-1-1" max="3000-12-31">
       </div>
       <div>
         <label for="appt" class="col-sm-2 col-form-label">Time:</label>
-        <input type="time" id="appt" name="appt"
+        <input type="time" id="formTimeStart" name="appt"
           min="00:00" max="23:59" required>
       </div>
     </div>
@@ -52,5 +52,6 @@
     </div>
     <script src="popup.js"></script>
     <script type="text/javascript" src="Oauth.js"></script>
+    
   </body>
 </html>
