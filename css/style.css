@@ -55,6 +55,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 2em;
 }
 
 .i i{
@@ -63,7 +64,7 @@ body{
 
 
 img{
-    width: 220px;
+    width: 300px;
     display: flex;
 	justify-content: flex-end;
 	align-items: center;

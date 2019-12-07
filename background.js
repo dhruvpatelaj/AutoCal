@@ -9,6 +9,8 @@ var contextSelection = {
 };
 
 
+
+
 var title;
 var date;
 var time;
@@ -20,64 +22,56 @@ var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];//Just an arr
 
 /** BACKEND  */
 
-chrome.contextMenus.create(contextSelection);
+
+
+
+chrome.contextMenus.removeAll(function() {
+  chrome.contextMenus.create(contextSelection);
+});
 
 chrome.contextMenus.onClicked.addListener(function(parseData){
-  
 
 
+  //DO THIS
+  value = "appt"
+  chrome.storage.sync.set({'eventValue': value}, function () {
+      
+  });
+//DO THIS
+   
   
-  
-  
-
-
   if(parseData.menuItemId == "baseString" && parseData.selectionText){
 
-
-
-    
     var selection = parseData.selectionText;
     eventRecognition(selection)
+    alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
+
     
-    //alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
-
-      title = "some"
-      loc  = "loc"
-      
-      chrome.storage.local.set({'Ftitle': title}, function () {
-        
-      });
-
-      chrome.storage.local.set({'Fdate': date}, function () {
-
-      });
-      chrome.storage.local.set({'Ftime': time}, function () {
-
-      });
-      chrome.storage.local.set({'Floc': loc}, function () {
-        
-      });
-
-      
-    chrome.tabs.create({ // this will call pop-up.js
-        url: chrome.extension.getURL('popup.html'),
-        active: false
-    }, function(tab) {
-        // After the tab has been created, open a window to inject the tab
-        chrome.windows.create({
-            tabId: tab.id,
-            type: 'popup',
-            focused: true,
-            width: 390,
-            height: 750
-        });
-
-      
-    
-      
-    });
   }
+
+  
+
+
+   chrome.tabs.create({
+      url: chrome.extension.getURL('popup.html'),
+      active: false
+  }, function(tab) {
+      // After the tab has been created, open a window to inject the tab
+      chrome.windows.create({
+          tabId: tab.id,
+          type: 'popup',
+          focused: true,
+          width: 390,
+          height: 730
+      });
+
+    
+    
+    
+  });
+
 })
+
   
 function eventRecognition(selection)
 {
@@ -160,7 +154,7 @@ function timeFinder(selection)
 function locFinder(selection){
 
 
-    loc = "d";
+    loc = "no location";
 }
 /** BACKEND  */
 

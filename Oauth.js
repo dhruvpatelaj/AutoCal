@@ -44,7 +44,7 @@ window.onload = function() {
                 {
                     method: "post",
                     body: makeQuerystring({
-                        text: "Appointment at Somewhere on December 6th 10am-10:25am"
+                        text: "Appointment at Somewhere on December 15th 10am-10:25am"
                     }),
                     headers: {
                         'Authorization': 'Bearer ' + token,
@@ -87,7 +87,7 @@ window.onload = function() {
                 {
                     method: "post",
                     body: makeQuerystring({
-                        text: "Appointment at Somewhere on December 13th 10am-10:25am"
+                        text: "Appointment at Somewhere on December 15th 10am-10:25am"
                     }),
                     headers: {
                         'Authorization': 'Bearer ' + token,
