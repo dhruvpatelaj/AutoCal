@@ -9,8 +9,6 @@ var contextSelection = {
 };
 
 
-
-
 var title;
 var date;
 var time;
@@ -22,37 +20,10 @@ var keyWords =  ["tomorrow", "in", "on", "friday","monday","have"];//Just an arr
 
 /** BACKEND  */
 
-
-
-
-chrome.contextMenus.removeAll(function() {
-  chrome.contextMenus.create(contextSelection);
-});
+chrome.contextMenus.create(contextSelection);
 
 chrome.contextMenus.onClicked.addListener(function(parseData){
-
-
-  //DO THIS
-  value = "appt"
-  chrome.storage.sync.set({'eventValue': value}, function () {
-      
-  });
-//DO THIS
-   
-  
-  if(parseData.menuItemId == "baseString" && parseData.selectionText){
-
-    var selection = parseData.selectionText;
-    eventRecognition(selection)
-    alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
-
-    
-  }
-
-  
-
-
-   chrome.tabs.create({
+    chrome.tabs.create({
       url: chrome.extension.getURL('popup.html'),
       active: false
   }, function(tab) {
@@ -62,16 +33,23 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
           type: 'popup',
           focused: true,
           width: 390,
-          height: 730
+          height: 550
       });
 
     
-    
+   
     
   });
 
-})
+  if(parseData.menuItemId == "baseString" && parseData.selectionText){
 
+    var selection = parseData.selectionText;
+    eventRecognition(selection)
+    alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
+
+    //fillForm(<parameters>)
+  }
+})
   
 function eventRecognition(selection)
 {
@@ -154,7 +132,7 @@ function timeFinder(selection)
 function locFinder(selection){
 
 
-    loc = "no location";
+    loc = "d";
 }
 /** BACKEND  */
 

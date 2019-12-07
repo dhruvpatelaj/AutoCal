@@ -1,119 +1,56 @@
-<!doctype HTML>
-
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
 
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script  type="text/javascript" src="background.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
     
+
+
     <title>AutoCal</title>
-
-
-
-</head>
-
-
-<body>
-
-    <br>
-    
-    <div class="container">
-        
-        <div class="form-content">
-             
-            <form action="popup.html">
-                
-                <input type="submit" class="btn" id="Oauth"  value="Login">
-                <img src="images/forms.svg">
-                <h2> AutoCal </h2>
-
-                <!-- Event Name -->
-                <div class="input-div">
-                    
-                    <div class="i">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div>
-                        <h5>Event Name</h5>
-                        <input class="input" id="eventName" type="text">
-                    </div>
-
-                </div>
-
-                <!-- Event Date-->
-                <div class="input-div">
-                    
-                    <div class="i">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div>
-                        <h5>Date</h5>
-                        <input class="input"  id="eventDate" type="date">
-                    </div>
-
-                </div>
-               
-                <!-- Event Time-->
-                 <div class="input-div">
-                    
-                    <div class="i">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div>
-                        <h5>Start Time</h5>
-                        <input class="input" id="eventTime" type="time">
-                    </div>
-
-                </div>
-
-                <div class="input-div">
-                    
-                    <div class="i">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div>
-                        <h5>End Time</h5>
-                        <input class="input" id="eventTimeEnd" type="time">
-                    </div>
-    
-                </div>
-                
-                <!-- Event Location-->
-                <div class="input-div">
-                    
-                    <div class="i">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div>
-                        <h5>Location</h5>
-                        <input class="input" id="eventLocation" type="text">
-                    </div>
-
-                </div>
-
-                <input type="submit" class="btn" id="submit" value="Send">
-                
-            </form>
-
-        </div>
-
-
+  </head>
+  <body>
+      
+    <div class="modal-header">
+      <h1>
+        <img class="logo-icon" src="/images/cal_icon.jpeg"/>AutoCal
+        <span class="version">(0.1)</span>
+      </h1>
     </div>
-    
+
+    <div class="modal-body">
+
+      <div>
+        <label for="eventName" class="col-sm-2 col-form-label">Event:</label>
+        <input type="Event Name" id="eventName" name="Put Event Name Here" placeholder="Event Name">
+        <label for="location" class="col-sm-2 col-form-label">Location:</label>
+        <input type="Location" id="location" name="Put Location Here" placeholder="Location">
+      </div>
+      <div>
+        <label for="start" class="col-sm-2 col-form-label">Date:</label>
+        <input type="date" id="start" name="trip-start"
+            min="2019-1-1" max="3000-12-31">
+      </div>
+      <div>
+        <label for="appt" class="col-sm-2 col-form-label">Time:</label>
+        <input type="time" id="appt" name="appt"
+          min="00:00" max="23:59" required>
+      </div>
+    </div>
+    <div class="modal-header">
+      <button type="submit" class="btn btn-info" id="submit" data-toggle="submit" data-target="submit">Send to Calendar</button>
+      <button type="submit" class="btn btn-info" id="Oauth" data-toggle="Oauth" data-target="Oauth">Sign In</button>
+    </div>
     <script src="popup.js"></script>
     <script type="text/javascript" src="Oauth.js"></script>
-    <script  type="text/javascript" src="background.js"></script>
-
-
-
-
-</body>
+  </body>
 </html>
