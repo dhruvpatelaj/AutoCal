@@ -33,10 +33,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
 
   //DO THIS
-  value = "appt"
-  chrome.storage.sync.set({'eventValue': value}, function () {
-      
-  });
+  
 //DO THIS
    
   
@@ -47,6 +44,14 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
     alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
 
     
+    chrome.storage.sync.set({'eventTitle': title}, function () {
+        //alert(title);
+    });
+
+    chrome.storage.sync.set({'location': loc}, function(){
+
+    });
+
   }
 
   

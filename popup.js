@@ -1,3 +1,19 @@
+var formName = document.getElementById("formName");
+
+
+chrome.storage.sync.get(['eventTitle'], function(result) {
+
+	formName.value = result.eventTitle;
+});
+
+chrome.storage.sync.get(['location'], function(result) {
+
+	alert(result.eventTitle);
+});
+
+
+
+
 const inputs = document.querySelectorAll(".input");
 
 

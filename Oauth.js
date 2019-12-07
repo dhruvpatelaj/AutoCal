@@ -10,7 +10,7 @@ function removeElement(elementId) {
     
 window.onload = function() {
 
-    chrome.storage.local.get(['login'], function(result) {
+    chrome.storage.sync.get(['login'], function(result) {
         if(result.login){
             removeElement("Oauth")
         }
@@ -27,7 +27,7 @@ window.onload = function() {
             const queryParams = {headers};
 
             value = true;
-            chrome.storage.local.set({'login': value}, function () {
+            chrome.storage.sync.set({'login': value}, function () {
                 
             });
             fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', queryParams)
@@ -43,19 +43,19 @@ window.onload = function() {
                     })
                     .join("&");
 
-            fetch(
-                "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd",
-                {
-                    method: "post",
-                    body: makeQuerystring({
-                        text: "Appointment at Somewhere on December 15th 10am-10:25am"
-                    }),
-                    headers: {
-                        'Authorization': 'Bearer ' + token,
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    }
-                }
-            )
+            // fetch(
+            //     "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd",
+            //     {
+            //         method: "post",
+            //         body: makeQuerystring({
+            //             text: "Appointment at Somewhere on December 15th 10am-10:25am"
+            //         }),
+            //         headers: {
+            //             'Authorization': 'Bearer ' + token,
+            //             "Content-Type": "application/x-www-form-urlencoded"
+            //         }
+            //     }
+            // )
                 .then(res => res.json())
                 .then(json => console.log(json));
         })
@@ -65,6 +65,7 @@ window.onload = function() {
 
 
     document.getElementById('submit').addEventListener('click', function () {
+        
         chrome.identity.getAuthToken({interactive: true}, function (token) {
             const headers = new Headers({
                 'Authorization': 'Bearer ' + token,
