@@ -52,14 +52,16 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
     });
 
+
+    
+    
+
+
   }
 
-  
-
-
-   chrome.tabs.create({
-      url: chrome.extension.getURL('popup.html'),
-      active: false
+  chrome.tabs.create({
+    url: chrome.extension.getURL('popup.html'),
+    active: false
   }, function(tab) {
       // After the tab has been created, open a window to inject the tab
       chrome.windows.create({
@@ -75,6 +77,8 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
     
   });
 
+
+  
 })
 
   

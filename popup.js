@@ -1,5 +1,5 @@
 var formName = document.getElementById("formName");
-
+var formLocation= document.getElementById("formLocation");
 
 chrome.storage.sync.get(['eventTitle'], function(result) {
 
@@ -8,7 +8,7 @@ chrome.storage.sync.get(['eventTitle'], function(result) {
 
 chrome.storage.sync.get(['location'], function(result) {
 
-	alert(result.eventTitle);
+	formLocation.value = result.location;
 });
 
 
@@ -20,6 +20,10 @@ const inputs = document.querySelectorAll(".input");
 document.getElementById("formTimeStart").parentNode.parentNode.classList.add("focus");
 document.getElementById("formTimeEnd").parentNode.parentNode.classList.add("focus");
 document.getElementById("formDate").parentNode.parentNode.classList.add("focus");
+document.getElementById("formName").parentNode.parentNode.classList.add("focus");
+document.getElementById("formLocation").parentNode.parentNode.classList.add("focus");
+
+
 
 function addcl(){
 	let parent = this.parentNode.parentNode;
