@@ -119,36 +119,237 @@ function dateFinder(selection){
     date = d;
 }
 
+//helper function for adding 12 to pm times, except for 12pm
+function pmAdd(hour)
+{
+    //hour will be startHour or endHour, in string format
+    hour = parseInt(hour);
+    //check that it isn't 12pm, otherwise add 12
+    if (hour != 12)
+    {
+        hour = (hour + 12) % 24;
+    }
+    return hour;
+}
+
 function timeFinder(selection)
 {
+    "use strict";
     //first clear the variables
     time = "";
     endTime = "";
 
-    //first search for times in colon format like: 6:30, 9:20, 2:00
+    //add 5 spaces to end of selection to catch edgecase of AM or PM being the last char
+    //since I search for a space or period or comma after the AM
+    selection = selection + "     ";
+
+    //first search for times in colon format like: 6:30, 9:20, 12:00
     var colonTime = selection.match(/([0-9]{1,2})(:[0-5][0-9])/gi);
+
+    //initialization of the time parts
+    var startHour, startMinute, endHour, endMinute;
+
+    //flag for no endtime detected
+    var no_endTime;
+
+    var am_index = -1;
+    var pm_index = -1;
+    var am_index2 = -1;
+    var pm_index2 = -1;
+    var am_pm_count = 0;
+
+    var time_index = -1;
+    var endTime_index = -1;
 
     //if anything in colon format have been found, then assume
     //them to be the start and end time. If no end time, it returns undefined
     if (colonTime != undefined)
     {
+        // startHour = colonTime[0].substring(0,2);
+        // startMinute = colonTime[0].substring(3,6);
+
+        //first store time in their appropriate variables
         time = colonTime[0];
         endTime = colonTime[1];
+
+        //if no endtime found, set flag
+        if (endTime == undefined)
+        {
+            no_endTime = true;
+        }
+        else
+        {
+            no_endTime = false;
+        }
+
+//================this finds locations of all AMs and all PMs, and make sure there arent more than 2 detected============
+//I cannot add 0 to the front of (time) 1:00 yet, because I need the index of 1:00, not 01:00,as the latter may not exist
+
+        //find indexes of first AM and first PM, case insensitive
+        // these regex searches catch number (maybe a whitespace) before the am, and a space or end after....
+        am_index = selection.search(/[0-9](\s?)am(\s|,|.)/gi);
+        pm_index = selection.search(/[0-9](\s?)pm(\s|,|.)/gi);
+
+
+        //finds if there is second AM in text
+        if (am_index != -1)
+        {
+            am_pm_count++;
+            //do not recount the first AM, so take substring that definitely wil not include it
+            am_index2 = selection.substring(am_index+3).search(/[0-9](\s?)am(\s|,|.)/gi);
+
+            //re-add the substring part removed
+            if (am_index2 != -1)
+            {
+                am_index2 += (am_index+3);
+                am_pm_count++;
+            }
+        }
+        //finds if there is second PM in text
+        if (pm_index != -1)
+        {
+            am_pm_count++;
+            pm_index2 = selection.substring(pm_index+3).search(/[0-9](\s?)pm(\s|,|.)/gi);
+            if (pm_index2 != -1)
+            {
+                pm_index2 += (pm_index+3);
+                am_pm_count++;
+            }
+        }
+
+        //check that no more than 2 AMs or PMs are detected
+        //xxxxxxxxxxx should return empty variables probably?
+        if (am_pm_count > 2)
+        {
+            alert("too many ams or pms");
+        }
+
+        time_index = selection.search(time);
+        if (no_endTime == false)
+        {
+            endTime_index = selection.search(endTime);
+        }
+
+        //alert(am_index + " " + am_index2 + " " + pm_index + " " + pm_index2 + " " + am_pm_count + " "+ time_index + " " + endTime_index);
+
+//==========================================================================================================
+
+// ++++++++++++++++++++ performing PM +12 calculations and shit ++++++++++++++++++++++++++++++++
+
+        //need colonTime to be 00:00 format, so length of 5
+        if (colonTime[0].length != 5)
+        {
+            colonTime[0] = "0" + colonTime[0];
+        }
+        if (no_endTime == false && colonTime[1].length != 5)
+        {
+            colonTime[1] = "0" + colonTime[1];
+        }
+        startHour = colonTime[0].substring(0, 2);
+        startMinute = colonTime[0].substring(3, 6);
+
+        if (no_endTime == false)
+        {
+            endHour = colonTime[1].substring(0, 2);
+            endMinute = colonTime[1].substring(3, 6);
+        }
+
+        //testing
+        //alert("before: " + startHour + ":" + startMinute + " - " + endHour + ":" + endMinute);
+
+        //PM correction by adding 12 to the startHour or endHour
+        //if no pm found, do nothing
+        if (pm_index == -1)
+        {
+
+        }
+        //THERE MUST BE A PM NOW FOR ALL BELOW
+        //if no endtime and there is a PM, add 12 to startHour
+        else if (no_endTime == true)
+        {
+            //mod by 24 just in case someone puts 17:00pm or some shit
+            startHour = pmAdd(startHour);
+            //(parseInt(startHour)+ 12) % 24;
+        }
+        //thee is a pm and an endtime now for all below
+
+        //if there is NOT a second pm index, then do +12 to both times
+        //12:00-2:00pm and 12:00pm-2 will both be true
+        else if (pm_index2 != -1)
+        {
+            startHour = pmAdd(startHour);
+            endHour = pmAdd(endHour);
+        }
+        //if there is 1 pm and no AM and it comes after both times, apply +12 to both
+        else if (pm_index2 == -1 && am_index == -1 && pm_index > endTime_index)
+        {
+            startHour = pmAdd(startHour);
+            endHour = pmAdd(endHour);
+        }
+        //if there is only 1 pm, and it comes before the endtime index, then apply +12 only to startHour
+        //11:00pm - 2:00am
+        else if (pm_index2 == -1 && pm_index < endTime_index)
+        {
+            startHour = pmAdd(startHour);
+        }
+        //there must be an 11:00AM and then a 2PM sort of deal
+        //apply +12 to endHour only
+        else
+        {
+            endHour = pmAdd(endHour);
+        }
+        //testing
+        //alert("after: " + startHour + ":" + startMinute + " - " + endHour + ":" + endMinute);
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+        //if no endTime found
+        if (no_endTime == true)
+        {
+            //default endtime is 1 hour after start time
+            //mod 24 to make sure it is a valid time
+            endHour = (parseInt(startHour) + 1) % 24
+            endMinute = startMinute;
+
+        }
+        //in case the minute times are 60 or greater
+        if (parseInt(startMinute) > 59)
+        {
+            startMinute = parseInt(startMinute) % 60;
+            startMinute = startMinute + "0";
+        }
+        if (parseInt(endMinute) > 59)
+        {
+            endMinute = parseInt(endMinute) % 60;
+            endMinute = endMinute + "0";
+        }
+
+        //assemble the final strings!
+        time = startHour + ":" + startMinute + ":00";
+        endTime = endHour + ":" + endMinute + ":00";
+
         return;
     }
+    else //fuck no colontime found. need to look for AM or PM
+    {
+        //not finished... sorry
 
-    // this don't do anything yet
-    //search() returns-1 if none found
-    var position_of_first_num = selection.search(/[0-9]/gi);
-    var am_pm = selection.search(/am|pm/gi);
-    var space = selection.search(/../gi);
+        // this don't do anything yet
+        //search() returns-1 if none found
 
-    var full = selection.match(/[0-9](\s?)(am|pm)/mi);
-    //var fullIndex = full.index;
+        // var position_of_first_num = selection.search(/[0-9]/gi);
+        // var am_pm = selection.search(/am|pm/gi);
+        // var space = selection.search(/../gi);
+        //
+        // var full = selection.match(/[0-9](\s?)(am|pm)/mi);
+        // var fullIndex = full.index;
 
-    //time =  "hehexd";
-    //full + " : " + fullIndex;
-    //position_of_first_num + ", " + am_pm + ", " + space;
+        //time =  "hehexd";
+        //full + " : " + fullIndex;
+        //position_of_first_num + ", " + am_pm + ", " + space;
+
+        //time = startHour + ":" + startMinute + ":00";
+    }
 }
 
 function locFinder(selection){
