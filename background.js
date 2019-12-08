@@ -90,33 +90,12 @@ function eventRecognition(selection)
     //alert(parseData.selectionText)
 }
 
-function titleFinder(selection) //this works but it is still some problems
+function titleFinder(selection)
 {
-  // alert(selection)
   var temp = "";
   var temp2  ="";
   var flag = false;
-  // var flag = false;
   title = "";
-  // for(var i = 0; i<selection.length; i++){
-  //   if(selection[i] != ' '){
-  //     temp = temp + selection[i];
-  //   }else if(selection[i] == ' '){
-  //     for(var k = 0; k < keyWords.length; k++){
-  //       if(temp.toLowerCase() == keyWords[k]){
-  //         flag = true;
-  //         break;
-  //       }
-  //     }
-  //     if(flag == true){
-  //       break;
-  //     }
-  //     title = title + " " + temp;
-  //     temp = "";
-  //   }
-  // }
-
-  //
   var select = selection.toLowerCase();
   var key = select.search(/(Club|Lesson|Deadline|Application|Party|Event|Dance|Show|Performance|Concert|Cook|Cooking|Clean|Cleaning|Wash|Washing|Print|Work|Internship|Job|Review|Study|Class|Recitation|Lecture|Lab|Drive|Commute|Fair|Playdate|Interview|Celebration|Hike|Bike|Football|Soccer|Ride|Tutor|Tutoring|Train|Training|Work|Mandatory|Optional|Volunteer|Anniversary|Birthday|Write|Paint|Draw|Practice|Review|Midterm|Test|exam|practicum|quiz|Final|Title|Event|Vacation|trip|retreat|camp|Breakfast|Lunch|Dinner|break)/i);
   var counter = key;
