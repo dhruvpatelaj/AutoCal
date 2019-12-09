@@ -353,15 +353,16 @@ function timeFinder(selection)
 }
 
 function locFinder(selection){
-    var d = selection.match([A-Z]{3,4}[[:blank:]][0-9]{1,4});
+    loc = "";
+    var d = selection.match(/([A-Z]{3,4}[[:blank:]][0-9]{1,4})/gi);
     if(d == null){
-      d = selection.match((Hall|Center|Gymnasium|Gym|Museum|Classroom|Lecture Hall|Bar|Club|Lodge|Gun Range|Gallery|Church|Stadium|Hardware Store));
+      d = selection.match(/(Hall|Center|Gymnasium|Gym|Museum|Classroom|Lecture Hall|Bar|Club|Lodge|Gun Range|Gallery|Church|Stadium|Hardware Store)/gi);
     }
     if(d == null){
-      d = selection.match((Mosque|Altar|Factory|Brewery|Cattery|Pet Shop|Pet Store|Dog Races|Horse Races|Cat Races|Home|House|Lab|Laboratory|Mill|Farm));
+      d = selection.match(/(Mosque|Altar|Factory|Brewery|Cattery|Pet Shop|Pet Store|Dog Races|Horse Races|Cat Races|Home|House|Lab|Laboratory|Mill|Farm)/gi);
     }
     if(d == null){
-      d = selection.match((Store|Market|Supermarket|Superman|Cinema|Opera|Theater|Movies|Awards Show|Doctor|Station|Locksmith|Bakery|Parole Office));
+      d = selection.match(/(Store|Market|Supermarket|Superman|Cinema|Opera|Theater|Movies|Awards Show|Doctor|Station|Locksmith|Bakery|Parole Office)/gi);
     }
     if(d == null){
       loc = "no location";
