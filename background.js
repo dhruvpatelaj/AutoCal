@@ -391,6 +391,9 @@ function locFinder(selection){
       d = selection.match(/([A-Za-z0-9]{0,20}\s(Store|Market|Supermarket|Cinema|Opera|Theater|Movies|Awards Show|Doctor|Station|Locksmith|Bakery|Parole Office)\s[A-Za-z0-9]{0,10})/gi);
     }
     if(d == null){
+      d = selection.match(/(Room|Building|Entrance|exit|hallway|wing|department|tower|Floor|Theater|Museum|High School|Elementary School|Store|Market|Supermarket|Cinema|Opera|Theater|Movies|Awards Show|Doctor|Station|Locksmith|Bakery|Parole Office|Middle School|Hall|Stadium|Lab|Laboratory|cafe|coffee|shop|mall|library|restaurant|diner|office|desk|printer|complex|park|House|Church|Temple|Mosque|store|bank|beach|pool|lake|court|soccer field|football field|Rec Center|field|West|East|North|South|street|avenue|circle|court|drive|road|loop|boulevard|lane|parkway|place|way|Hall|Center|Gymnasium|Gym|Museum|Classroom|Lecture Hall|Bar|Club|Lodge|Gun Range|Gallery|Church|Stadium|Hardware Store|Mosque|Altar|Factory|Brewery|Cattery|Pet Shop|Pet Store|Dog Races|Horse Races|Home|House|Lab|Laboratory|Mill|Farm|Store|Market|Supermarket|Cinema|Opera|Theater|Movies|Awards Show|Doctor|Station|Locksmith|Bakery|Parole Office)/gi);
+    }
+    if(d == null){
       loc = "no location";
     }
     else{
