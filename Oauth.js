@@ -30,6 +30,8 @@ window.onload = function() {
             chrome.storage.sync.set({'login': value}, function () {
                 
             });
+
+
             fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', queryParams)
                 .then((response) => response.json()) // Transform the data into json
                 .then(function (data) {
@@ -65,6 +67,16 @@ window.onload = function() {
 
 
     document.getElementById('submit').addEventListener('click', function () {
+
+        var formName = document.getElementById("formName").value;
+        var formLocation= document.getElementById("formLocation").value;
+        var formDate= document.getElementById("formDate").value
+        var formTimeStart= document.getElementById("formTimeStart").value
+        var formTimeEnd= document.getElementById("formTimeEnd").value
+
+        var submitString = formName + " at " + formLocation + " on " + formDate + " " + formTimeStart + "-" + formTimeEnd;
+        alert(submitString);
+
         chrome.identity.getAuthToken({interactive: true}, function (token) {
             const headers = new Headers({
                 'Authorization': 'Bearer ' + token,
@@ -91,7 +103,7 @@ window.onload = function() {
                 {
                     method: "post",
                     body: makeQuerystring({
-                        text: "Appointment at Somewhere on December 15th 11am-11:25am"
+                        text: submitString
                     }),
                     headers: {
                         'Authorization': 'Bearer ' + token,

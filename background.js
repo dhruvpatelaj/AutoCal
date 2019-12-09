@@ -33,10 +33,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
 
   //DO THIS
-  value = "appt"
-  chrome.storage.sync.set({'eventValue': value}, function () {
-
-  });
+  
 //DO THIS
 
 
@@ -45,6 +42,26 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
     var selection = parseData.selectionText;
     eventRecognition(selection)
     alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
+
+    chrome.storage.sync.set({'eventTitle': title}, function () {
+
+    });
+
+    chrome.storage.sync.set({'location': loc}, function () {
+
+    });
+
+    chrome.storage.sync.set({'date': date}, function () {
+
+    });
+
+    chrome.storage.sync.set({'startTime': time}, function () {
+
+    });
+
+    chrome.storage.sync.set({'endTime': endTime}, function () {
+
+    });
 
 
   }
