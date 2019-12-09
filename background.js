@@ -121,6 +121,36 @@ function titleFinder(selection) //this works but it is still some problems
       temp = "";
     }
   }
+  //This might work better
+  // var temp = "";
+  // var temp2  ="";
+  // var flag = false;
+  // title = "";
+  // var select = selection.toLowerCase();
+  // var key = select.search(/(appointment|meeting|doctor|Club|Lesson|Deadline|Application|Party|Event|Dance|Show|Performance|Concert|Cook|Cooking|Clean|Cleaning|Wash|Washing|Print|Work|Internship|Job|Review|Study|Class|Recitation|Lecture|Lab|Drive|Commute|Fair|Playdate|Interview|Celebration|Hike|Bike|Football|Soccer|Ride|Tutor|Tutoring|Train|Training|Work|Mandatory|Optional|Volunteer|Anniversary|Birthday|Write|Paint|Draw|Practice|Review|Midterm|Test|exam|practicum|quiz|Final|Title|Event|Vacation|trip|retreat|camp|Breakfast|Lunch|Dinner|break)/i);
+  // if(key != -1){
+  //   var counter = key;
+  //   while(flag == false){
+  //     if(select[counter] == ' '){
+  //       break;
+  //     }
+  //     temp = temp + select[counter];
+  //     counter++;
+  //   }
+  //   var res = select.split(" ");
+  //   for(var i=0;i < res.length;i++){
+  //     if(temp == res[i] && (i-1)!=-1){
+  //       title = res[i-1] + " " + res[i]
+  //       break;
+  //     }
+  //   }
+  //   if(title == ""){
+  //     title = temp;
+  //   }
+  //   alert(title)
+  // }else{
+  //   title = "No event title";
+  // }
 }
 
 
