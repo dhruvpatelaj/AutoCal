@@ -105,7 +105,7 @@ window.onload = function() {
 
 
         var submitString = formName + " at " + formLocation + " on " + formDate + " " + formTimeStart + "-" + formTimeEnd;
-        alert(submitString);
+        //alert(submitString);
 
         //window.close();
 
@@ -146,6 +146,7 @@ window.onload = function() {
                 .then(res => res.json())
                 .then(json => console.log(json));
         })
+        window.close();
         
     });
 };

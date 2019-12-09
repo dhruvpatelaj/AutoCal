@@ -41,7 +41,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
     var selection = parseData.selectionText;
     eventRecognition(selection)
-    alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
+    //alert(title + "\n" + date + "\n" + time + "\n" + endTime + "\n" + loc);
 
     chrome.storage.sync.set({'eventTitle': title}, function () {
 
