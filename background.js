@@ -133,9 +133,9 @@ function titleFinder(selection)
 
 function dateFinder(selection){
     date = "";
-    var d = selection.match(/(([1-9])|([0-2][0-9]))((\/)|(-))(([1-9])|([0-2][0-9])|([3][0-1]))((\/)|(-))((\d{4})|(\d{2}))/gi); //finds dates in mm/dd/yyy, m/d/yy, and same using dashes
+    var d = selection.match(/(([0-2][0-9])|([1-9]))((\/)|(-))(([3][0-1])|([0-2][0-9])|([1-9]))((\/)|(-))((\d{4})|(\d{2}))/gi); //finds dates in mm/dd/yyy, m/d/yy, and same using dashes
     if(d == null){
-      var d = selection.match(/(([1-9])|([0-2][0-9]))((\/)|(-))(([1-9])|([0-2][0-9])|([3][0-1]))/gi); //finds dates in  mm/dd, m/d,
+      var d = selection.match(/(([0-2][0-9])|([1-9]))((\/)|(-))(([3][0-1])|([0-2][0-9])|([1-9]))/gi); //finds dates in  mm/dd, m/d,
     }
     if(d == null){
       var d = selection.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan.|Feb.|Mar.|Apr.|May.|Jun.|Jul.|Aug.|Sep.|Oct.|Nov.|Dec.|January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}/gi);
