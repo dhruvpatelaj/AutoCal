@@ -7,7 +7,7 @@
       "https://www.googleapis.com/auth/calendar"
     ]
   },
-  "version": "0.1",
+  "version": "1.0",
   "description": "Ability to automatically link up calendars",
   "permissions": ["activeTab", "declarativeContent", "storage", "identity","contextMenus"],
   "background": {
@@ -23,7 +23,7 @@
       "128": "images/get_started128.png"
     }
   },
-  
+
   "icons": {
     "16": "images/get_started16.png",
     "32": "images/get_started32.png",
