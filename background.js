@@ -32,7 +32,7 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
 
 
   //DO THIS
-  
+
 //DO THIS
 
 
@@ -77,8 +77,8 @@ chrome.contextMenus.onClicked.addListener(function(parseData){
           tabId: tab.id,
           type: 'popup',
           focused: true,
-          width: 200,
-          height: 350
+          width: 430,
+          height: 650
       });
 
 
