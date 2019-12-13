@@ -20,7 +20,7 @@ function militaryToStanard(time){
     }
     
     timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-    timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
+    //timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
     timeValue += (hours >= 12) ? " pm" : " am";  // get AM/PM
 
     return timeValue;
