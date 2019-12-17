@@ -2,7 +2,7 @@
 An extension that reads text highlighted within Google Chrome, parses it, and sends it to a form which opens for editing at the user's discretion, and finally sends it to the user's calendar using the Google API and the sign-in information which has been requested of the user.
 
 Deployment: 
-Download the folder and unzip it. 
+1. Download the folder and unzip it. 
 Go to chrome://extensions/
 Turn on Developer Mode
 Select Load Unpacked and load the folder
