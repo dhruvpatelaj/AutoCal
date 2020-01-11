@@ -11,3 +11,4 @@ Deployment:
 7.  Simply manually input your event or right-click on highlighted text to see ‘Send to Calendar’ option, which will also open the app.
 8. Check calendar after a few seconds with your updated event
 
+Here is a sample string to try: Hey X, let's have a meeting on 1/1/20 at 9:30 - 10:30 AM to discuss this further. 
